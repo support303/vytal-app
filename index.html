@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VYTAL · Calm Sage</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
-<style>
-  html, body { margin: 0; padding: 0; background: #e8e6e0; font-family: 'Inter', -apple-system, system-ui, sans-serif; }
-  * { box-sizing: border-box; }
-  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-  input[type=number] { -moz-appearance: textfield; }
-</style>
-
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VYTAL · Health &amp; Wellness</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { height: 100%; }
+    body { background: #06111F; }
+    ::-webkit-scrollbar { display: none; }
+  </style>
 </head>
 <body>
-<div id="root"></div>
+  <div id="root"></div>
+  
 <script type="text/babel" data-file="ios-frame.jsx">
 
 // iOS.jsx — Simplified iOS 26 (Liquid Glass) device frame
@@ -4845,83 +4845,35 @@ function SageProfile({ state, onClose, onLogout }) {
 Object.assign(window, { SageApp });
 
 </script>
-<script type="text/babel" data-file="components/main.jsx">
-const { DesignCanvas, DCSection, DCArtboard } = window;
+<script type="text/babel">
 
-function Phone({ children }) {
-  return <IOSDevice width={390} height={844}>{children}</IOSDevice>;
+function AppShell() {
+  const [authed, setAuthed] = React.useState(false);
+  if (!authed) {
+    return (
+      <div style={{ height: "100%", background: "#0A1B2E", fontFamily: '"Inter", system-ui, sans-serif' }}>
+        <SageAuth onAuthed={() => setAuthed(true)} />
+      </div>
+    );
+  }
+  return <SageApp webConnected={true} initialTab="diary" />;
 }
 
-function LoggedOutSage() {
-  return <div style={{ height: '100%', background: '#F5F1EA', fontFamily: '"Inter", sans-serif' }}>
-    <SageAuth onAuthed={() => {}} />
-  </div>;
-}
-
-function App() {
+function Root() {
   return (
-    <DesignCanvas title="VYTAL · Calm Sage" subtitle="Companion app for vytal.com customers — diary, progress, care (deliveries + consultations + prescriptions), coach.">
-      <DCSection id="auth" title="Auth" subtitle="Welcome, sign in, and sign up.">
-        <DCArtboard id="sage-auth" label="Welcome / Sign in / Sign up" width={390} height={844}>
-          <Phone><LoggedOutSage /></Phone>
-        </DCArtboard>
-      </DCSection>
-
-      <DCSection id="tracking" title="Yazio-style tracking" subtitle="Works for everyone — food diary, macros, water, progress, coach.">
-        <DCArtboard id="sage-diary" label="Diary · food, macros, water" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="diary" /></Phone>
-        </DCArtboard>
-        <DCArtboard id="sage-progress" label="Progress · weight, BMI, milestones" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="progress" /></Phone>
-        </DCArtboard>
-      </DCSection>
-
-      <DCSection id="workouts" title="Treinos · plano + check-in" subtitle="Plano semanal do Trainer AI ou coach humano. Tique cada exercício conforme você completa.">
-        <DCArtboard id="sage-workouts-fresh" label="Treinos · plano de hoje (não iniciado)" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="workouts" /></Phone>
-        </DCArtboard>
-        <DCArtboard id="sage-workouts-progress" label="Treinos · em progresso (3/6 ticks)" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="workouts" preTicks={3} /></Phone>
-        </DCArtboard>
-        <DCArtboard id="sage-workouts-empty" label="Treinos · sem plano (gerar com AI)" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="workouts" noPlan={true} /></Phone>
-        </DCArtboard>
-      </DCSection>
-
-      <DCSection id="agents" title="Equipe AI · agentes desbloqueáveis" subtitle="Coach é grátis. Terapeuta, Trainer e Nutricionista são add-ons mensais — ou pacote com 30% off.">
-        <DCArtboard id="sage-agents-locked" label="Equipe · todos os especialistas bloqueados" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="coach" /></Phone>
-        </DCArtboard>
-        <DCArtboard id="sage-agents-paywall" label="Paywall · Helena (terapeuta)" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="coach" initialOverlay="agent-paywall-therapist" /></Phone>
-        </DCArtboard>
-        <DCArtboard id="sage-agents-bundle" label="Pacote · 3 agentes com 30% off" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="coach" initialOverlay="agent-bundle" /></Phone>
-        </DCArtboard>
-        <DCArtboard id="sage-agents-unlocked" label="Equipe · com Trainer ativo" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="coach" preUnlocked={['trainer']} /></Phone>
-        </DCArtboard>
-      </DCSection>
-
-      <DCSection id="care" title="Care — for vytal.com customers" subtitle="Orders, cold-chain delivery tracking, teleconsultations and prescriptions. All read-only — bought and booked on the website.">
-        <DCArtboard id="sage-care-connected" label="Care · next consult, delivery tracking, history" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="care" /></Phone>
-        </DCArtboard>
-        <DCArtboard id="sage-care-disconnected" label="Care · not connected to vytal.com" width={390} height={844}>
-          <Phone><SageApp webConnected={false} initialTab="care" /></Phone>
-        </DCArtboard>
-      </DCSection>
-
-      <DCSection id="coach" title="AI Coach" subtitle="Claude-powered — tap the card to start chatting.">
-        <DCArtboard id="sage-coach" label="Coach · chat with Claude" width={390} height={844}>
-          <Phone><SageApp webConnected={true} initialTab="coach" /></Phone>
-        </DCArtboard>
-      </DCSection>
-    </DesignCanvas>
+    <div style={{
+      minHeight: "100vh", background: "#06111F",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      padding: "32px 16px"
+    }}>
+      <IOSDevice width={390} height={844}>
+        <AppShell />
+      </IOSDevice>
+    </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<Root />);
 
 </script>
 </body>
