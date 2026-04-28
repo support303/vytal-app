@@ -12,7 +12,7 @@ function SageWelcome({ onLogin, onSignup }) {
     <div style={{
       height: '100%', background: sageColors.bg, position: 'relative',
       display: 'flex', flexDirection: 'column', padding: '56px 24px 36px',
-      overflow: 'hidden', color: "rgb(0, 0, 0)"
+      overflow: 'hidden', color: sageColors.ink
     }}>
       {/* Ambient glows */}
       <div style={{ position: 'absolute', top: -120, right: -80, width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(closest-side, rgba(61,188,181,0.35), transparent 70%)' }} />

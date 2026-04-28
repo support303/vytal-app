@@ -26,7 +26,7 @@ function SageProgress({ state, onOpen }) {
           }}>{weekChange <= 0 ? '−' : '+'}{Math.abs(weekChange).toFixed(1)} kg / wk</div>
         </div>
         <div style={{ fontSize: 13, color: sageColors.inkSoft, marginBottom: 16 }}>Week {user.weekNumber} of your plan</div>
-        <WeightChart history={history} stroke={sageColors.sageDeep} fill="rgba(31,58,46,0.08)" dotFill={sageColors.sageDeep} goalLine={user.goalWeight} width={320} height={140} />
+        <WeightChart history={history} stroke={sageColors.sageDeep} fill="rgba(61,188,181,0.08)" dotFill={sageColors.sageDeep} goalLine={user.goalWeight} width={320} height={140} />
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 12, fontSize: 11, color: sageColors.inkFaint }}>
           {history.filter((_, i) => i % 2 === 0).map((h, i) => <span key={i}>W{h.week}</span>)}
         </div>

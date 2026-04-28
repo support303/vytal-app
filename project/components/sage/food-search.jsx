@@ -152,12 +152,12 @@ function SageFoodSearch({ state, meal, onClose }) {
               <div style={{
                 aspectRatio: '1/1', maxWidth: 220, margin: '0 auto 16px',
                 borderRadius: 20,
-                background: 'repeating-linear-gradient(135deg, #e8ebe5, #e8ebe5 8px, #dde2d8 8px, #dde2d8 16px)',
+                background: 'repeating-linear-gradient(135deg, rgba(61,188,181,0.14), rgba(61,188,181,0.14) 8px, rgba(61,188,181,0.06) 8px, rgba(61,188,181,0.06) 16px)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <div style={{ color: sageColors.sageDeep, textAlign: 'center' }}>
                   {SageIcon.camera(sageColors.sageDeep, 36)}
-                  <div style={{ fontSize: 11, marginTop: 8, fontFamily: 'ui-monospace, monospace', color: 'rgba(31,58,46,0.5)' }}>your plate</div>
+                  <div style={{ fontSize: 11, marginTop: 8, fontFamily: 'ui-monospace, monospace', color: 'rgba(61,188,181,0.5)' }}>your plate</div>
                 </div>
               </div>
               <SageButton onClick={takePhoto}>Snap a photo</SageButton>

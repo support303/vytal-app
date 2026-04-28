@@ -337,47 +337,47 @@ function SagePrescriptionDetail({ rx, onClose }) {
         {/* Paper sheet */}
         <div style={{
           background: '#fff', borderRadius: 16, padding: '28px 24px',
-          boxShadow: '0 2px 20px rgba(26,42,34,0.08)', position: 'relative',
+          boxShadow: '0 2px 20px rgba(0,0,0,0.12)', position: 'relative',
           fontFamily: '"Fraunces", serif',
         }}>
           {/* Letterhead */}
-          <div style={{ textAlign: 'center', marginBottom: 22, paddingBottom: 16, borderBottom: `1px solid ${sageColors.divider}` }}>
+          <div style={{ textAlign: 'center', marginBottom: 22, paddingBottom: 16, borderBottom: '1px solid rgba(0,0,0,0.10)' }}>
             <div style={{ fontSize: 20, letterSpacing: 2, color: sageColors.sageDeep, fontWeight: 500 }}>VYTAL</div>
-            <div style={{ fontSize: 10, letterSpacing: 1, color: sageColors.inkSoft, textTransform: 'uppercase', marginTop: 4, fontFamily: 'Inter' }}>Medical prescription · Rx</div>
+            <div style={{ fontSize: 10, letterSpacing: 1, color: 'rgba(0,0,0,0.5)', textTransform: 'uppercase', marginTop: 4, fontFamily: 'Inter' }}>Medical prescription · Rx</div>
           </div>
 
           {/* Doctor */}
           <div style={{ marginBottom: 18, fontFamily: 'Inter' }}>
-            <div style={{ fontSize: 10, color: sageColors.inkSoft, letterSpacing: 0.4, textTransform: 'uppercase', marginBottom: 3, fontWeight: 500 }}>Prescribing physician</div>
-            <div style={{ fontSize: 14, fontWeight: 500, color: sageColors.ink }}>{rx.issuedBy}</div>
-            <div style={{ fontSize: 11, color: sageColors.inkSoft, marginTop: 2, fontFamily: 'ui-monospace, monospace' }}>{rx.crm}</div>
+            <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.5)', letterSpacing: 0.4, textTransform: 'uppercase', marginBottom: 3, fontWeight: 500 }}>Prescribing physician</div>
+            <div style={{ fontSize: 14, fontWeight: 500, color: '#111' }}>{rx.issuedBy}</div>
+            <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.5)', marginTop: 2, fontFamily: 'ui-monospace, monospace' }}>{rx.crm}</div>
           </div>
 
           {/* Patient */}
-          <div style={{ marginBottom: 22, paddingBottom: 18, borderBottom: `1px dashed ${sageColors.divider}`, fontFamily: 'Inter' }}>
-            <div style={{ fontSize: 10, color: sageColors.inkSoft, letterSpacing: 0.4, textTransform: 'uppercase', marginBottom: 3, fontWeight: 500 }}>Patient</div>
-            <div style={{ fontSize: 14, fontWeight: 500 }}>Maya Rocha</div>
+          <div style={{ marginBottom: 22, paddingBottom: 18, borderBottom: '1px dashed rgba(0,0,0,0.12)', fontFamily: 'Inter' }}>
+            <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.5)', letterSpacing: 0.4, textTransform: 'uppercase', marginBottom: 3, fontWeight: 500 }}>Patient</div>
+            <div style={{ fontSize: 14, fontWeight: 500, color: '#111' }}>Maya Rocha</div>
           </div>
 
           {/* Rx body */}
           <div style={{ fontFamily: 'Inter' }}>
             <div style={{ fontSize: 28, fontFamily: '"Fraunces", serif', color: sageColors.sageDeep, marginBottom: 4 }}>℞</div>
-            <div style={{ fontSize: 18, fontWeight: 500, letterSpacing: -0.3, color: sageColors.ink, marginBottom: 2 }}>{rx.medication}</div>
-            <div style={{ fontSize: 15, color: sageColors.ink, marginBottom: 14 }}>{rx.dose}</div>
+            <div style={{ fontSize: 18, fontWeight: 500, letterSpacing: -0.3, color: '#111', marginBottom: 2 }}>{rx.medication}</div>
+            <div style={{ fontSize: 15, color: '#111', marginBottom: 14 }}>{rx.dose}</div>
 
-            <div style={{ fontSize: 13, lineHeight: 1.7, color: sageColors.ink }}>
-              <div><span style={{ color: sageColors.inkSoft }}>Sig:</span> {rx.frequency}</div>
-              <div><span style={{ color: sageColors.inkSoft }}>Duration:</span> {rx.duration}</div>
-              <div><span style={{ color: sageColors.inkSoft }}>Dispense:</span> {rx.quantity}</div>
+            <div style={{ fontSize: 13, lineHeight: 1.7, color: '#111' }}>
+              <div><span style={{ color: 'rgba(0,0,0,0.5)' }}>Sig:</span> {rx.frequency}</div>
+              <div><span style={{ color: 'rgba(0,0,0,0.5)' }}>Duration:</span> {rx.duration}</div>
+              <div><span style={{ color: 'rgba(0,0,0,0.5)' }}>Dispense:</span> {rx.quantity}</div>
             </div>
           </div>
 
           {/* Status stamp */}
           <div style={{
-            marginTop: 24, paddingTop: 16, borderTop: `1px solid ${sageColors.divider}`,
+            marginTop: 24, paddingTop: 16, borderTop: '1px solid rgba(0,0,0,0.10)',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontFamily: 'Inter',
           }}>
-            <div style={{ fontSize: 11, color: sageColors.inkSoft }}>Issued {rx.date}</div>
+            <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.5)' }}>Issued {rx.date}</div>
             <div style={{
               padding: '4px 10px', borderRadius: 999, fontSize: 11, fontWeight: 500,
               background: active ? sageColors.sageLight : sageColors.bgSoft,

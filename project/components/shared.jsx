@@ -476,7 +476,7 @@ function useVytalState(opts = {}) {
 }
 
 // SVG line chart
-function WeightChart({ history, stroke = '#1f3a2e', fill = 'rgba(31,58,46,0.08)', width = 340, height = 120, dotFill = '#1f3a2e', goalLine }) {
+function WeightChart({ history, stroke = '#3DBCB5', fill = 'rgba(61,188,181,0.08)', width = 340, height = 120, dotFill = '#3DBCB5', goalLine }) {
   const min = Math.min(...history.map(h => h.weight), goalLine || Infinity) - 0.6;
   const max = Math.max(...history.map(h => h.weight)) + 0.6;
   const xStep = width / (history.length - 1);
@@ -505,16 +505,16 @@ function FoodPhotoPlaceholder({ w = 56, h = 56, radius = 12, label = '' }) {
   return (
     <div style={{
       width: w, height: h, borderRadius: radius, flexShrink: 0,
-      background: 'repeating-linear-gradient(135deg, #e8ebe5, #e8ebe5 6px, #dde2d8 6px, #dde2d8 12px)',
+      background: 'repeating-linear-gradient(135deg, rgba(61,188,181,0.14), rgba(61,188,181,0.14) 6px, rgba(61,188,181,0.06) 6px, rgba(61,188,181,0.06) 12px)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       fontFamily: 'ui-monospace, SFMono-Regular, monospace', fontSize: 9,
-      color: 'rgba(31,58,46,0.5)', textAlign: 'center', padding: 4, boxSizing: 'border-box',
+      color: 'rgba(61,188,181,0.5)', textAlign: 'center', padding: 4, boxSizing: 'border-box',
     }}>{label}</div>
   );
 }
 
 // Circular progress ring
-function Ring({ pct, size = 140, stroke = 10, color = '#1f3a2e', bg = 'rgba(31,58,46,0.12)', children }) {
+function Ring({ pct, size = 140, stroke = 10, color = '#3DBCB5', bg = 'rgba(61,188,181,0.12)', children }) {
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
   const offset = c - (pct / 100) * c;
@@ -538,11 +538,12 @@ function Ring({ pct, size = 140, stroke = 10, color = '#1f3a2e', bg = 'rgba(31,5
 function TripleRing({ kcalPct, proteinPct, carbsPct, fatPct, size = 150, children }) {
   const stroke = 8;
   const gap = 11;
+  const sc = window.sageColors || {};
   const rings = [
-    { pct: kcalPct, color: '#1F3A2E', r: (size - stroke) / 2 },
-    { pct: proteinPct, color: '#C4A574', r: (size - stroke) / 2 - gap },
-    { pct: carbsPct, color: '#8BA892', r: (size - stroke) / 2 - gap * 2 },
-    { pct: fatPct, color: '#D4B896', r: (size - stroke) / 2 - gap * 3 },
+    { pct: kcalPct, color: sc.sage || '#3DBCB5', r: (size - stroke) / 2 },
+    { pct: proteinPct, color: sc.protein || '#2C7BB8', r: (size - stroke) / 2 - gap },
+    { pct: carbsPct, color: sc.carbs || '#5FD4CE', r: (size - stroke) / 2 - gap * 2 },
+    { pct: fatPct, color: sc.fat || '#D4B872', r: (size - stroke) / 2 - gap * 3 },
   ];
   return (
     <div style={{ position: 'relative', width: size, height: size }}>
